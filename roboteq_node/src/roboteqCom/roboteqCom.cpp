@@ -5,6 +5,29 @@
 namespace oxoocoffee
 {
 
+std::string    ConvertToHex(const unsigned char character)
+{
+    char buffer[8];
+
+#ifdef WIN32
+    sprintf_s(buffer, sizeof(buffer), "%02X ", character);
+#else
+    sprintf(buffer, "%02X ", character);
+#endif
+
+    return buffer;
+}
+
+std::string    ConvertToHexString(const unsigned char* pBuffer, unsigned int bufferSize)
+{
+    string data;
+
+    for( unsigned int Idx(0); Idx < bufferSize; ++Idx )
+        data += ConvertToHex((unsigned char)pBuffer[Idx]);
+
+    return data;
+}
+
 #define     ROBO_SND_TERMINATOR		"\r"
 #define     ROBO_RCV_TERMINATOR		'\n'	
 #define	    ROBO_MSG_MAX		    1024

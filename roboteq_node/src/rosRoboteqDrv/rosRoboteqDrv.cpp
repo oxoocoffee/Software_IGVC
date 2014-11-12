@@ -180,12 +180,12 @@ void	RosRoboteqDrv::Process_S(const IEventArgs& evt)
 			            wheelVelocity.left		= secondVal * RPM_TO_RAD_PER_SEC;
 
                         _pub.publish(RosRoboteqDrv::ConvertWheelVelocityToTwist(wheelVelocity.left, wheelVelocity.right));
-                        ROS_INFO_STREAM("Wheel RPM's: " << firstVal << " :: " << secondVal);
+                        ROS_DEBUG_STREAM("Wheel RPM's: " << firstVal << " :: " << secondVal);
                 }
                 else
-		        {
+		{
                   	ROS_ERROR_STREAM("Invalid(2) S Reply Format");
-		        }
+		}
         }
         else
 	    {
@@ -226,7 +226,7 @@ void    RosRoboteqDrv::LogLine(const char* pBuffer, unsigned int len)
 // RoboteqCom and app Log Messages. Do append newline
 void    RosRoboteqDrv::LogLine(const std::string& message)
 {
-	ROS_INFO_STREAM(message);
+    ROS_INFO_STREAM(message);
 }
 
 // RoboteqCom and app Log Messages. Do not append newline
